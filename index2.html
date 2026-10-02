@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- أضف سطر أيقونة Favicon هنا -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | NOVA STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <div class="auth-card">
+        <a href="index.html" class="logo auth-logo">NOVA<span>.</span></a>
+
+        <div class="auth-heading">
+          <span>WELCOME BACK</span>
+          <h1>Login to your account</h1>
+          <p>Frontend demo — no real account or server is used.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            Phone Number
+            <input id="phone" type="tel" placeholder="01xxxxxxxxx" required />
+          </label>
+
+          <label>
+            Password
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+              required
+            />
+          </label>
+
+          <label>
+            Verification Code
+            <div class="otp-row">
+              <input
+                id="otp"
+                type="text"
+                inputmode="numeric"
+                maxlength="4"
+                placeholder="0000"
+                required
+              />
+              <button id="sendOtp" type="button" class="otp-btn">
+                Send Code
+              </button>
+            </div>
+            <small id="otpMessage"
+              >Press "Send Code" to generate a demo code.</small
+            >
+          </label>
+
+          <button class="primary-btn auth-submit" type="submit">
+            Login
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <p id="loginMessage" class="login-message"></p>
+        </form>
+
+        <a href="index.html" class="back-home">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Home
+        </a>
+      </div>
+    </main>
+
+    <script>
+      const loginForm = document.getElementById("loginForm");
+      const sendOtp = document.getElementById("sendOtp");
+      const otpInput = document.getElementById("otp");
+      const otpMessage = document.getElementById("otpMessage");
+      const loginMessage = document.getElementById("loginMessage");
+
+      let demoOtp = "";
+
+      sendOtp.addEventListener("click", () => {
+        demoOtp = String(Math.floor(1000 + Math.random() * 9000));
+        otpMessage.textContent = "Demo verification code: " + demoOtp;
+        otpMessage.classList.add("show-otp");
+        otpInput.focus();
+      });
+
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const otp = otpInput.value.trim();
+
+        if (!phone || !password || !otp) {
+          loginMessage.textContent = "Please fill in all fields.";
+          loginMessage.className = "login-message error";
+          return;
+        }
+
+        if (!demoOtp) {
+          loginMessage.textContent =
+            "Generate the demo verification code first.";
+          loginMessage.className = "login-message error";
+          return;
+        }
+
+        if (otp !== demoOtp) {
+          loginMessage.textContent = "The verification code is incorrect.";
+          loginMessage.className = "login-message error";
+          return;
+        }
+
+        localStorage.setItem("novaLoggedIn", "true");
+        localStorage.setItem("novaPhone", phone);
+
+        loginMessage.textContent = "Login successful! Returning to NOVA...";
+        loginMessage.className = "login-message success";
+
+        setTimeout(() => {
+          const back = sessionStorage.getItem("novaReturn");
+sessionStorage.removeItem("novaReturn");
+window.location.href = back || "index.html";
+        }, 700);
+      });
+    </script>
+  </body>
+</html>

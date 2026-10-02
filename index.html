@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<!-- أضف سطر أيقونة Favicon هنا -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVA STORE | Everything You Need</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+<body class="home">
+    <header class="navbar">
+      <a href="index.html" class="logo">NOVA<span></span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="index2.html" class="login-btn mobile-login">
+          <i class="fa-regular fa-user"></i> Login
+        </a>
+      </nav>
+      <div class="nav-actions">
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"
+          ><i class="fa-regular fa-heart"></i
+          ><span class="badge wishlist-count">0</span></a
+        >
+        <a href="cart.html" class="icon-btn" title="Cart"
+          ><i class="fa-solid fa-cart-shopping"></i
+          ><span class="badge cart-count">0</span></a
+        >
+        <a href="index2.html" class="login-btn desktop-login"
+          ><i class="fa-regular fa-user"></i>Login</a
+        >
+        <button class="menu-btn" id="menuBtn" type="button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-label">EVERYTHING YOU NEED</span>
+        <h1>Shop Smarter<span>Live Better</span></h1>
+        <p>
+          Discover thousands of <b>products</b>, amazing <b>deals</b>, and
+          everything you need in one place.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="shop.html" class="primary-btn"
+            >Shop Now<i class="fa-solid fa-arrow-right"></i
+          ></a>
+          <a href="categories.html" class="secondary-btn">Explore Categories</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><strong>10K+</strong><span>Products</span></div>
+          <div><strong>50+</strong><span>Categories</span></div>
+          <div><strong>24/7</strong><span>Support</span></div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="glow"></div>
+        <div class="product-showcase">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>NOVA</span>
+        </div>
+        <div class="floating-card card-one">
+          <i class="fa-solid fa-truck-fast"></i>
+          <div><strong>Fast Delivery</strong><span>Quick & Secure</span></div>
+        </div>
+        <div class="floating-card card-two">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <strong>Secure Shopping</strong><span>Safe & Reliable</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span>EXPLORE</span>
+          <h2>Shop by Category</h2>
+        </div>
+        <a href="categories.html"
+          >View All<i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+
+      <div class="categories-grid">
+        <a href="category.html?category=Electronics" class="category-card">
+          <div class="category-icon"><i class="fa-solid fa-laptop"></i></div>
+          <h3>Electronics</h3>
+          <p>Phones, laptops & more</p>
+        </a>
+        <a href="category.html?category=Fashion" class="category-card">
+          <div class="category-icon"><i class="fa-solid fa-shirt"></i></div>
+          <h3>Fashion</h3>
+          <p>Style for everyone</p>
+        </a>
+        <a
+          href="category.html?category=Home%20%26%20Living"
+          class="category-card"
+        >
+          <div class="category-icon"><i class="fa-solid fa-house"></i></div>
+          <h3>Home & Living</h3>
+          <p>Make your home better</p>
+        </a>
+        <a href="category.html?category=Sports" class="category-card">
+          <div class="category-icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <h3>Sports</h3>
+          <p>Fitness & sports gear</p>
+        </a>
+        <a href="category.html?category=Beauty" class="category-card">
+          <div class="category-icon"><i class="fa-solid fa-spa"></i></div>
+          <h3>Beauty</h3>
+          <p>Care & beauty products</p>
+        </a>
+        <a href="category.html?category=Groceries" class="category-card">
+          <div class="category-icon">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <h3>Groceries</h3>
+          <p>Fresh everyday essentials</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span>FEATURED</span>
+          <h2>Popular Products</h2>
+        </div>
+        <a href="shop.html">View All<i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="products-grid" id="featuredProducts"></div>
+    </section>
+
+    <section class="brand-banner">
+      <span>ABOUT NOVA STORE</span>
+      <h1>One Store. Everything You Need.</h1>
+      <p>
+        NOVA STORE هو وجهتك اللي بتجمعلك كل حاجة محتاجها في مكان واحد — من
+        التكنولوجيا للأزياء للمنزل والرياضة والجمال والبقالة. بنختار منتجاتنا
+        بعناية ونوفرها بأسعار حلوة وتوصيل سريع وآمن، عشان تجربة تسوق بسيطة
+        ومريحة من أول ضغطة.
+      </p>
+    </section>
+
+    <section class="why-section">
+      <div class="why-content">
+        <span>WHY NOVA?</span>
+        <h2>Everything Made Simple.</h2>
+        <p>
+          NOVA STORE brings products from different categories together in one
+          simple shopping experience.
+        </p>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fa-solid fa-truck-fast"></i>
+          <h3>Fast Delivery</h3>
+          <p>Get your products delivered quickly and safely.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Secure Shopping</h3>
+          <p>A simple and secure shopping experience.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-tags"></i>
+          <h3>Great Deals</h3>
+          <p>Discover products and special offers every day.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-headset"></i>
+          <h3>24/7 Support</h3>
+          <p>We're here whenever you need help.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div>
+        <span>STAY UPDATED</span>
+        <h2>Get the Latest Deals</h2>
+        <p>Subscribe and never miss a deal.</p>
+      </div>
+      <form id="newsletterForm">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">
+          Subscribe<i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">NOVA<span>.</span></a>
+          <p>Everything you need, all in one place.</p>
+          <div class="socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="categories.html">Categories</a>
+        </div>
+        <div class="footer-column">
+          <h3>Customer</h3>
+          <a href="wishlist.html">Wishlist</a>
+          <a href="cart.html">Cart</a>
+          <a href="index2.html">Login</a>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <a href="mailto:support@novastore.com">support@novastore.com</a>
+          <a href="tel:+201000000000">+20 100 000 0000</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 NOVA STORE. All rights reserved.</p>
+        <div>
+          <a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="product.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

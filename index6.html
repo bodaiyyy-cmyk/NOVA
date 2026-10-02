@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- أضف سطر أيقونة Favicon هنا -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | NOVA STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="logo">NOVA<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"
+          ><i class="fa-regular fa-heart"></i
+          ><span class="badge wishlist-count">0</span></a
+        >
+        <a href="cart.html" class="icon-btn" title="Cart"
+          ><i class="fa-solid fa-cart-shopping"></i
+          ><span class="badge cart-count">0</span></a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="checkout-page">
+        <form class="checkout-form" id="checkoutForm">
+          <h2>Shipping Details</h2>
+
+          <label
+            >Full Name
+            <input
+              type="text"
+              id="fullName"
+              placeholder="e.g. Ahmed Mohamed"
+              required
+            />
+          </label>
+          <label
+            >Phone Number
+            <input type="tel" id="phone" placeholder="01xxxxxxxxx" required />
+          </label>
+          <label
+            >Address
+            <input
+              type="text"
+              id="address"
+              placeholder="Street, building, floor"
+              required
+            />
+          </label>
+          <label
+            >City
+            <input type="text" id="city" placeholder="e.g. Cairo" required />
+          </label>
+          <label
+            >Payment Method
+            <select id="paymentMethod">
+              <option>Cash on Delivery</option>
+              <option>Credit Card (Demo)</option>
+            </select>
+          </label>
+
+          <button
+            type="submit"
+            class="primary-btn auth-submit"
+            id="confirmOrderBtn"
+          >
+            Confirm Order <i class="fa-solid fa-check"></i>
+          </button>
+        </form>
+
+        <aside class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="checkoutItems"></div>
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="checkoutTotal">$0.00</strong>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="product.js"></script>
+    <script src="index.js"></script>
+    <script>
+      if (!isLoggedIn()) {
+        sessionStorage.setItem("novaReturn", location.href);
+        window.location.href = "index2.html";
+      }
+
+      // Order source: ?from=wishlist  or  ?from=cart (default)
+      const orderSource =
+        new URLSearchParams(location.search).get("from") === "wishlist"
+          ? "wishlist"
+          : "cart";
+
+      function loadStored(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key)) || [];
+        } catch (err) {
+          return [];
+        }
+      }
+
+      // wishlist items have no quantity, so each one counts as 1
+      const orderItems =
+        orderSource === "wishlist"
+          ? loadStored("novaWishlist").map((item) => ({ ...item, quantity: 1 }))
+          : loadStored("novaCart");
+
+      const checkoutItemsEl = document.getElementById("checkoutItems");
+      const checkoutTotalEl = document.getElementById("checkoutTotal");
+
+      let total = 0;
+      if (orderItems.length) {
+        checkoutItemsEl.innerHTML = orderItems
+          .map((item) => {
+            const lineTotal = item.price * item.quantity;
+            total += lineTotal;
+            return `<div class="order-summary-item"><span>${item.name} × ${item.quantity}</span><span>$${lineTotal.toFixed(2)}</span></div>`;
+          })
+          .join("");
+      } else {
+        checkoutItemsEl.innerHTML = `<div class="order-summary-item"><span>${orderSource === "wishlist" ? "Your wishlist is empty" : "Your cart is empty"}</span></div>`;
+      }
+      checkoutTotalEl.textContent = `$${total.toFixed(2)}`;
+
+      const checkoutForm = document.getElementById("checkoutForm");
+      checkoutForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!orderItems.length) {
+          showToast("مفيش منتجات في الطلب، ضيف منتجات الأول", "cart-shopping");
+          return;
+        }
+
+        const btn = document.getElementById("confirmOrderBtn");
+        btn.disabled = true;
+        btn.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+
+        setTimeout(() => {
+          // after a successful order, empty BOTH the cart and the wishlist
+          localStorage.removeItem("novaCart");
+          localStorage.removeItem("novaWishlist");
+          cart.length = 0;
+          wishlist.length = 0;
+          updateCartCount();
+          updateWishlistCount();
+
+          showToast(
+            "تم الطلب بنجاح! هيوصلك خلال 2-4 أيام عمل 📦",
+            "circle-check",
+          );
+          checkoutForm.reset();
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> Order Placed';
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 2200);
+        }, 900);
+      });
+    </script>
+  </body>
+</html>

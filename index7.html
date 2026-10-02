@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- أضف سطر أيقونة Favicon هنا -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category | NOVA STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="logo">NOVA<span>.</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html" class="active">Categories</a>
+        <a href="index2.html" class="login-btn mobile-login"
+          ><i class="fa-regular fa-user"></i> Login</a
+        >
+      </nav>
+      <div class="nav-actions">
+        <a href="shop.html" class="icon-btn" title="Search"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></a>
+        <a href="wishlist.html" class="icon-btn" title="Wishlist"
+          ><i class="fa-regular fa-heart"></i
+          ><span class="badge wishlist-count">0</span></a
+        >
+        <a href="cart.html" class="icon-btn" title="Cart"
+          ><i class="fa-solid fa-cart-shopping"></i
+          ><span class="badge cart-count">0</span></a
+        >
+        <a href="index2.html" class="login-btn desktop-login"
+          ><i class="fa-regular fa-user"></i>Login</a
+        >
+        <button class="menu-btn" id="menuBtn" type="button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section category-page">
+        <div class="section-heading">
+          <div>
+            <span id="categoryLabel">CATEGORY</span>
+            <h2 id="categoryTitle">Products</h2>
+            <p id="categoryDescription"></p>
+          </div>
+          <a href="categories.html"
+            >All Categories<i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="products-grid" id="categoryProducts"></div>
+      </section>
+    </main>
+
+    <script src="product.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
