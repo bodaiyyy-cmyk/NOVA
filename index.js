@@ -139,7 +139,7 @@ function productCardHTML(product) {
                 <button class="wishlist-btn" data-id="${product.id}">
                     <i class="fa-${inWish ? "solid" : "regular"} fa-heart"></i>
                 </button>
-                <a href="product.html?id=${product.id}" class="product-link-image">
+                <a href="index3.html?id=${product.id}" class="product-link-image">
                     ${productImg(product, "product-img", "product-placeholder")}
                 </a>
             </div>
@@ -452,7 +452,7 @@ if (document.getElementById("productDetails")) {
                 <i class="fa-solid fa-box-open" style="font-size:60px;color:var(--primary);"></i>
                 <h1 style="margin-top:20px;">Product Not Found</h1>
                 <p style="color:var(--text-secondary);margin-top:10px;">This product doesn't exist or was removed.</p>
-                <a href="shop.html" class="primary-btn" style="display:inline-flex;margin-top:25px;">
+                <a href="index4.html" class="primary-btn" style="display:inline-flex;margin-top:25px;">
                     Back to Shop <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>`;
@@ -466,7 +466,7 @@ if (document.getElementById("productDetails")) {
             </div>
 
             <div class="product-details-info">
-                <a href="shop.html" class="back-home product-back-link">
+                <a href="index4.html" class="back-home product-back-link">
                     <i class="fa-solid fa-arrow-left"></i> Back to Shop
                 </a>
 
@@ -509,8 +509,8 @@ if (document.getElementById("productDetails")) {
                 <div class="cart-drawer-items" id="cartDrawerItems"></div>
                 <div class="cart-drawer-footer">
                     <div class="cart-drawer-total"><span>Total</span><strong id="cartDrawerTotal">$0.00</strong></div>
-                    <a href="checkout.html?from=cart" class="primary-btn cart-drawer-checkout" id="drawerOrderNowBtn">Order Now <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="cart.html" class="secondary-btn cart-drawer-view">View Full Cart</a>
+                    <a href="index6.html?from=cart" class="primary-btn cart-drawer-checkout" id="drawerOrderNowBtn">Order Now <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="index8.html" class="secondary-btn cart-drawer-view">View Full Cart</a>
                 </div>
             </aside>
         </div>
@@ -524,8 +524,8 @@ if (document.getElementById("productDetails")) {
                 <div class="cart-drawer-items" id="wishlistDrawerItems"></div>
                 <div class="cart-drawer-footer">
                     <div class="cart-drawer-total"><span>Total</span><strong id="wishlistDrawerTotal">$0.00</strong></div>
-                    <a href="checkout.html?from=wishlist" class="primary-btn cart-drawer-checkout" id="wishlistDrawerOrderNowBtn">Order Now <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="wishlist.html" class="secondary-btn cart-drawer-view">View Wishlist</a>
+                    <a href="index6.html?from=wishlist" class="primary-btn cart-drawer-checkout" id="wishlistDrawerOrderNowBtn">Order Now <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="index5.html" class="secondary-btn cart-drawer-view">View Wishlist</a>
                 </div>
             </aside>
         </div>
@@ -605,15 +605,15 @@ if (document.getElementById("productDetails")) {
 
   // Open drawers from header icons
   document.addEventListener("click", (e) => {
-    const cartIcon = e.target.closest('a[href="cart.html"].icon-btn');
-    if (cartIcon && !location.pathname.endsWith("cart.html")) {
+    const cartIcon = e.target.closest('a[href="index8.html"].icon-btn');
+    if (cartIcon && !location.pathname.endsWith("index8.html")) {
       e.preventDefault();
       renderCartDrawer();
       openDrawer(cartOverlay);
     }
 
-    const wishIcon = e.target.closest('a[href="wishlist.html"].icon-btn');
-    if (wishIcon && !location.pathname.endsWith("wishlist.html")) {
+    const wishIcon = e.target.closest('a[href="index5.html"].icon-btn');
+    if (wishIcon && !location.pathname.endsWith("index5.html")) {
       e.preventDefault();
       renderWishlistDrawer();
       openDrawer(wishOverlay);
