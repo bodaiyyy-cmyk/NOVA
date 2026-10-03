@@ -2618,3 +2618,17 @@ video {
     width: 100%;
   }
 }
+
+/* =========================================
+   FIX 3: DISABLE ZOOM COMPLETELY ON TOUCH
+   (pinch + double-tap). Scrolling still works.
+========================================= */
+html,
+body,
+a,
+button,
+input,
+select,
+label {
+  touch-action: pan-x pan-y;
+}
