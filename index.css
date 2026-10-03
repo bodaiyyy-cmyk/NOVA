@@ -2512,3 +2512,34 @@ img {
     font-size: 27px;
   }
 }
+
+/* =========================================
+   FIX: STOP AUTO-ZOOM ON PHONES / TABLETS
+   iOS Safari zooms in when a field is focused
+   if its font-size is smaller than 16px.
+========================================= */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+input,
+select,
+textarea,
+.newsletter input,
+.shop-filters input,
+.shop-filters select,
+.auth-form input,
+.checkout-form input,
+.checkout-form select {
+  font-size: 16px !important;
+}
+
+/* no double-tap zoom on interactive elements (pinch zoom still works) */
+a,
+button,
+input,
+select,
+label {
+  touch-action: manipulation;
+}
