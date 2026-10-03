@@ -27,7 +27,9 @@ function loadList(key) {
 }
 let cart = isLoggedIn() ? loadList("novaCart") : [];
 function saveCart() {
-  localStorage.setItem("novaCart", JSON.stringify(cart));
+  try {
+    localStorage.setItem("novaCart", JSON.stringify(cart));
+  } catch (err) {}
 }
 function updateCartCount() {
   document.querySelectorAll(".cart-count").forEach((el) => {
@@ -38,7 +40,9 @@ function updateCartCount() {
 // ===== WISHLIST DATA =====
 let wishlist = isLoggedIn() ? loadList("novaWishlist") : [];
 function saveWishlist() {
-  localStorage.setItem("novaWishlist", JSON.stringify(wishlist));
+  try {
+    localStorage.setItem("novaWishlist", JSON.stringify(wishlist));
+  } catch (err) {}
 }
 function updateWishlistCount() {
   document.querySelectorAll(".wishlist-count").forEach((el) => {
@@ -54,7 +58,11 @@ updateWishlistCount();
 
 // ===== AUTH STATE (login / profile / logout) =====
 function isLoggedIn() {
-  return localStorage.getItem("novaLoggedIn") === "true";
+  try {
+    return localStorage.getItem("novaLoggedIn") === "true";
+  } catch (err) {
+    return false;
+  }
 }
 function getUserPhone() {
   return localStorage.getItem("novaPhone") || "";
@@ -88,7 +96,8 @@ function logout() {
 document.addEventListener("click", (e) => {
   if (e.target.closest(".login-btn.logged-in")) {
     e.preventDefault();
-    logout();
+    // تأكيد قبل الخروج عشان مفيش لوج اوت بالغلط
+    if (confirm("هل تريد تسجيل الخروج؟")) logout();
   }
 });
 

@@ -157,11 +157,22 @@
           '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
 
         setTimeout(() => {
-          // after a successful order, empty BOTH the cart and the wishlist
-          localStorage.removeItem("novaCart");
-          localStorage.removeItem("novaWishlist");
-          cart.length = 0;
-          wishlist.length = 0;
+          // remove ONLY the ordered products, from BOTH the cart and the wishlist
+          const orderedIds = orderItems.map((item) => item.id);
+
+          const newCart = loadStored("novaCart").filter(
+            (p) => !orderedIds.includes(p.id),
+          );
+          const newWishlist = loadStored("novaWishlist").filter(
+            (p) => !orderedIds.includes(p.id),
+          );
+
+          localStorage.setItem("novaCart", JSON.stringify(newCart));
+          localStorage.setItem("novaWishlist", JSON.stringify(newWishlist));
+
+          // keep the in-memory lists (from index.js) in sync
+          cart = newCart;
+          wishlist = newWishlist;
           updateCartCount();
           updateWishlistCount();
 
