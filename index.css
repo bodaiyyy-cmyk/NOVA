@@ -2543,3 +2543,78 @@ select,
 label {
   touch-action: manipulation;
 }
+
+/* =========================================
+   FIX 2: PAGE "ZOOM" ON PHONES / TABLETS
+   (a) hover effects that stick on touch screens
+   (b) elements pushed outside the screen width
+========================================= */
+
+/* (a) touch screens: hover transforms stay "stuck" after a tap
+       and look like the page/cards are zooming */
+@media (hover: none) {
+  .product-card:hover,
+  .category-card:hover,
+  .feature:hover,
+  .floating-card:hover,
+  .primary-btn:hover,
+  .secondary-btn:hover,
+  .login-btn:hover,
+  .add-cart:hover,
+  .scroll-top-btn:hover,
+  .wishlist-detail-btn:hover,
+  .newsletter form:hover,
+  .newsletter button:hover {
+    transform: none !important;
+  }
+  .product-card:hover .product-card-image {
+    transform: none !important;
+  }
+}
+
+/* (b) never let anything be wider than the screen,
+       otherwise mobile browsers zoom out to fit it */
+html,
+body {
+  max-width: 100%;
+}
+body {
+  overflow-x: hidden; /* fallback for old browsers */
+  overflow-x: clip; /* modern browsers (keeps sticky navbar working) */
+}
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+/* toast: slide up instead of sliding in from outside the screen */
+.toast-container {
+  max-width: calc(100vw - 48px);
+  pointer-events: none;
+}
+.toast {
+  transform: translateY(20px);
+}
+.toast.show {
+  transform: translateY(0);
+}
+
+/* drawers: clip the off-screen panel */
+.cart-drawer-overlay {
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* hero glow must not be wider than its container */
+.glow {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .shop-filters input,
+  .shop-filters select {
+    min-width: 0;
+    width: 100%;
+  }
+}
